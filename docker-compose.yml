@@ -1,0 +1,25 @@
+version: '3.5'
+services:
+  db:
+    image: "postgres:latest"
+    restart: always
+    environment:
+     - POSTGRES_USER=api
+     - POSTGRES_PASSWORD=api
+     - POSTGRES_DB=laravel
+     - PGDATA=/var/lib/postgresql/data
+    volumes:
+      - star_wars_api_data:/var/lib/postgresql/data
+
+
+  api:
+    image: "ilozulu_chris_paystack:latest"
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - "8181:8181"
+
+volumes:
+  star_wars_api_data:
+    external: true
