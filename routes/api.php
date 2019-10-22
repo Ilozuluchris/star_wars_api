@@ -18,3 +18,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/films', 'FilmsController@index');
+
+
+Route::fallback(function(){
+    return response()->json([
+        'message' => 'Page Not Found. Check documentation for valid routes'], 404);
+});
