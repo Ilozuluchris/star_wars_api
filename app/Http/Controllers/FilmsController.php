@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exceptions\SwApiException;
-use App\Http\Resources\Film;
+use App\Http\Resources\FilmResource;
 use App\Http\Resources\FilmCollection;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
@@ -28,13 +28,10 @@ class FilmsController extends Controller
         }
         $contents = $res->getBody()->getContents();
         $json_content =  json_decode($contents, true);
-        $results = $json_content['results'][0];
-//        echo gettype($results);
-//        dd($results);
-//        return new Film($results);
-//        dd($json_content);
-//        return response()->json($json_content, 200);
-        return new Film($results);
+        $films = collect($json_content['results'])->map(function($film){
+            return new FilmResource($film);
+        });
+        return response()->json(['data'=>$films], 200);
     }
 
 }
