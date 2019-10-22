@@ -24,9 +24,9 @@ class FilmsController extends Controller
             #todo log actual error
             throw  new SwApiException('Error getting list of films from swapi.com');
         }
-        echo $res->getStatusCode(); // 200
-        echo $res->getBody();
-//        return $res->getBody();
+        $contents = $res->getBody()->getContents();
+        $json_content = json_decode($contents);
+        return response()->json($json_content, 200);
     }
 
 }
