@@ -17,7 +17,9 @@ class FilmResource extends JsonResource
 
        return [
            'title'=>$this->resource['title'],
-           'episode_id'=>$this->resource['episode_id']
+           'episode_id'=>$this->resource['episode_id'],
+           'release_date'=>$this->resource['release_date'],
+           'comment_count'=>0
        ];
     }
 }
