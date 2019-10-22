@@ -4,11 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Exceptions\SwApiException;
 use App\Http\Resources\FilmResource;
-use App\Http\Resources\FilmCollection;
+use App\Http\Resources\FilmResourceCollection;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
 
 class FilmsController extends Controller
 {
@@ -29,13 +28,8 @@ class FilmsController extends Controller
         }
         $contents = $res->getBody()->getContents();
         $json_content =  json_decode($contents, true);
-        $films = collect($json_content['results'])->map(function($film){
-            return new FilmResource($film);
-        });
-        $sorted_films = array_values(Arr::sort($films, function ($film) {
-            return $film['release_date'];
-        }));
-        return response()->json(['data'=>$sorted_films], 200);
+        $films =  new FilmResourceCollection(FilmResource::collection(collect($json_content['results'])));
+        return response()->json($films, 200);
     }
 
 }
