@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Exceptions\SwApiException;
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
 use Illuminate\Http\Request;
 
 class FilmsController extends Controller
@@ -15,7 +17,13 @@ class FilmsController extends Controller
     public function index()
     {
         $client = new Client();
-        $res = $client->get('https://swapi.co/api/films/');
+        try{
+            $res = $client->get('https://swapi.co/api/films/');
+        }
+        catch (RequestException $e){
+            #todo log actual error
+            throw  new SwApiException('Error getting list of films from swapi.com');
+        }
         echo $res->getStatusCode(); // 200
         echo $res->getBody();
 //        return $res->getBody();

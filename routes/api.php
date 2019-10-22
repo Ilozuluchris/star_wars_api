@@ -22,5 +22,5 @@ Route::get('/films', 'FilmsController@index');
 
 Route::fallback(function(){
     return response()->json([
-        'message' => 'Page Not Found. Check documentation for valid routes'], 404);
+        'error' => 'Page Not Found. Check documentation for valid routes'], 404);
 });
