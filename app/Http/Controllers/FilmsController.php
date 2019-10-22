@@ -8,6 +8,7 @@ use App\Http\Resources\FilmCollection;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 
 class FilmsController extends Controller
 {
@@ -31,7 +32,10 @@ class FilmsController extends Controller
         $films = collect($json_content['results'])->map(function($film){
             return new FilmResource($film);
         });
-        return response()->json(['data'=>$films], 200);
+        $sorted_films = array_values(Arr::sort($films, function ($film) {
+            return $film['release_date'];
+        }));
+        return response()->json(['data'=>$sorted_films], 200);
     }
 
 }
