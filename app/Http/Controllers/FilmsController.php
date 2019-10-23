@@ -17,22 +17,19 @@
 
 /**
  * @OA\Get(
- *      path="/projects",
+ *      path="/api/films",
  *      operationId="getProjectsList",
- *      tags={"Projects"},
- *      summary="Get list of projects",
- *      description="Returns list of projects",
+ *      tags={"Films"},
+ *      summary="Get list of star wars films",
+ *      description="Returns list of star wars films",
  *      @OA\Response(
  *          response=200,
  *          description="successful operation"
  *       ),
- *       @OA\Response(response=400, description="Bad request"),
- *       security={
- *           {"api_key_security_example": {}}
- *       }
+ *       @OA\Response(response=500, description="Bad request"),*
  *     )
  *
- * Returns list of projects
+ * Returns list of star wars films
  */
 
 namespace App\Http\Controllers;
