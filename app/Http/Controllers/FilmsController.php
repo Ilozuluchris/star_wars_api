@@ -24,8 +24,11 @@
  *      description="Returns list of star wars films",
  *      @OA\Response(
  *          response=200,
- *          description="successful operation"
- *       ),
+ *          description="successful operation",
+ *          @OA\JsonContent(type="array",
+ *                          @OA\Items(ref="#/components/schemas/Film")
+ *          ),
+ *     ),
  *       @OA\Response(response=500, description="Bad request"),*
  *     )
  *
