@@ -1,5 +1,40 @@
 <?php
 
+/**
+ * @OA\Info(
+ *      version="1.0.0",
+ *      title="STAR WARS API",
+ *      description="STAR WARS API Swagger OpenApi description",
+ *      @OA\Contact(
+ *          email="ilozuluchidiuso@gmail.com"
+ *      ),
+ *     @OA\License(
+ *         name="Apache 2.0",
+ *         url="http://www.apache.org/licenses/LICENSE-2.0.html"
+ *     )
+ * )
+ */
+
+/**
+ * @OA\Get(
+ *      path="/projects",
+ *      operationId="getProjectsList",
+ *      tags={"Projects"},
+ *      summary="Get list of projects",
+ *      description="Returns list of projects",
+ *      @OA\Response(
+ *          response=200,
+ *          description="successful operation"
+ *       ),
+ *       @OA\Response(response=400, description="Bad request"),
+ *       security={
+ *           {"api_key_security_example": {}}
+ *       }
+ *     )
+ *
+ * Returns list of projects
+ */
+
 namespace App\Http\Controllers;
 
 use App\Exceptions\SwApiException;
