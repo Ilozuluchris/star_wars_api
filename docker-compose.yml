@@ -13,10 +13,12 @@ services:
 
 
   api:
-    image: "ilozulu_chris_paystack:latest"
+    image: "ilozulu_chris_sw_api:latest"
     restart: always
     depends_on:
       - db
+    environment:
+      - PORT=8181
     ports:
       - "8181:8181"
 

@@ -21,6 +21,7 @@ class FilmResource extends JsonResource
            'title'=>$this->resource['title'],
            'episode_id'=> $episode_id,
            'release_date'=>$this->resource['release_date'],
+            'opening_crawl'=>$this->resource['opening_crawl'],
            'comment_count'=>$this->getCommentCount($episode_id)
        ];
     }

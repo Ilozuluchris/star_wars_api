@@ -29,11 +29,17 @@ class Film{
 
     /**
      * Number of comments film has
-     * @var string
+     * @var int
      * @OA\Property()
      */
     public $comment_count;
 
 
+    /**
+     * Opening crawl of film
+     * @var string
+     * @OA\Property()
+     */
+    public $opening_crawl;
 
 }
