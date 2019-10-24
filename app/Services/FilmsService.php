@@ -3,9 +3,7 @@
 namespace App\Services;
 
 use App\Exceptions\SwApiException;
-use App\Http\Resources\FilmResource;
-use App\Http\Resources\FilmResourceCollection;
-
+use App\Http\Resources\{FilmResource, FilmResourceCollection};
 
 class FilmsService extends BaseService
 {
@@ -14,8 +12,8 @@ class FilmsService extends BaseService
      * @throws SwApiException
      */
 
-    public function allFilms(){
-        $json_content =  json_decode($this->getUrl('https://swapi.co/api/films/'), true);
+    public function allFilms():FilmResourceCollection{
+        $json_content =  $this->getUrl('https://swapi.co/api/films/');
         $films =  new FilmResourceCollection(FilmResource::collection(collect($json_content['results'])));
         return $films;
     }

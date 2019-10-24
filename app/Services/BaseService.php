@@ -11,7 +11,7 @@ abstract  class BaseService{
         $this->http_client = $HttpClient;
     }
 
-    public function getUrl($url){
+    public function getUrl(string $url):array{
         try{
             $res = $this->http_client->get($url);
         }
@@ -19,7 +19,7 @@ abstract  class BaseService{
             #todo log actual error, maybe even pass normal error in
             throw  new SwApiException('Error getting list of films from swapi.com');
         }
-        $contents = $res->getBody()->getContents();
+        $contents = json_decode($res->getBody()->getContents(), true);
         return $contents;
     }
 }
