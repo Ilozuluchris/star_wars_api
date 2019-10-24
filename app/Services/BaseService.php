@@ -16,7 +16,7 @@ abstract  class BaseService{
             $res = $this->http_client->get($url);
         }
         catch (RequestException $e){
-            #todo log actual error
+            #todo log actual error, maybe even pass normal error in
             throw  new SwApiException('Error getting list of films from swapi.com');
         }
         $contents = $res->getBody()->getContents();
