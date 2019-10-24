@@ -5,7 +5,6 @@ namespace App\Services;
 use App\Exceptions\SwApiException;
 use App\Http\Resources\FilmResource;
 use App\Http\Resources\FilmResourceCollection;
-use GuzzleHttp\Exception\RequestException;
 
 
 class FilmsService extends BaseService
@@ -16,15 +15,7 @@ class FilmsService extends BaseService
      */
 
     public function allFilms(){
-        try{
-            $res = $this->http_client->get('https://swapi.co/api/films/');
-        }
-        catch (RequestException $e){
-            #todo log actual error
-            throw  new SwApiException('Error getting list of films from swapi.com');
-        }
-        $contents = $res->getBody()->getContents();
-        $json_content =  json_decode($contents, true);
+        $json_content =  json_decode($this->getUrl('https://swapi.co/api/films/'), true);
         $films =  new FilmResourceCollection(FilmResource::collection(collect($json_content['results'])));
         return $films;
     }
