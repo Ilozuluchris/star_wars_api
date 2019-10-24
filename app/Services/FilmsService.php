@@ -5,11 +5,10 @@ namespace App\Services;
 use App\Exceptions\SwApiException;
 use App\Http\Resources\FilmResource;
 use App\Http\Resources\FilmResourceCollection;
-use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 
 
-class FilmsService
+class FilmsService extends BaseService
 {
     /*** Fetch ALL FILMS
      * @return FilmResourceCollection
@@ -17,9 +16,8 @@ class FilmsService
      */
 
     public function allFilms(){
-        $client = new Client();
         try{
-            $res = $client->get('https://swapi.co/api/films/');
+            $res = $this->http_client->get('https://swapi.co/api/films/');
         }
         catch (RequestException $e){
             #todo log actual error

@@ -36,21 +36,15 @@
  */
 
 namespace App\Http\Controllers;
-
-use App\Exceptions\SwApiException;
-use App\Http\Resources\FilmResource;
-use App\Http\Resources\FilmResourceCollection;
 use App\Services\FilmsService;
-use GuzzleHttp\Client;
-use GuzzleHttp\Exception\RequestException;
-use Illuminate\Http\Request;
+
 
 class FilmsController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     *  Displaying a list of resources
+     * @param FilmsService $filmsService
+     * @return \Illuminate\Http\JsonResponse
      */
     public function index(FilmsService $filmsService)
     {
