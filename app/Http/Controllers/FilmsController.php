@@ -47,9 +47,9 @@ class FilmsController extends Controller
      * @param FilmsService $filmsService
      * @return \Illuminate\Http\JsonResponse
      */
-    public function index(FilmsService $filmsService, CommentRepositoryInterface $repository)
+    public function index(FilmsService $filmsService)
     {
-        $films = $filmsService->allFilms($repository);
+        $films = $filmsService->allFilms();
         return response()->json($films, 200);
     }
 
