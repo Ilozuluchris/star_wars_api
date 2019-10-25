@@ -15,6 +15,7 @@ class CommentEloquentRepository implements CommentRepositoryInterface{
 
     public function all(){
         // TODO: Implement all() method.
+        return $this->comment::all()->orderBy('created_at');
     }
 
     public function countForFilm(int $film_episode_id):int{
@@ -23,8 +24,9 @@ class CommentEloquentRepository implements CommentRepositoryInterface{
        return $count;
     }
 
-    public function save(){
-        // TODO: Implement save() method.
+    public function save(array $params)
+    {
+        return $this->comment::create($params);
     }
 }
 

@@ -5,7 +5,7 @@ use App\Exceptions\SwApiException;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 
-abstract  class BaseService{
+abstract  class BaseNetworkService{
     public function __construct(Client $HttpClient)
     {
         $this->http_client = $HttpClient;

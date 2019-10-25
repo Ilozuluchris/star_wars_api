@@ -15,7 +15,7 @@ use Illuminate\Http\Request;
 */
 
 Route::get('/films', 'FilmsController@index');
-
+Route::post('/films/{film_episode_id}/comments', 'CommentController@store');
 
 Route::fallback(function(){
     return response()->json([

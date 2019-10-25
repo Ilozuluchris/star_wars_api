@@ -7,12 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
     //
-    protected $fillable = ['film_episode_id',
+    protected $fillable = [
+        'film_episode_id',
         'content',
         'commenter_ip',
     ];
 
     public $timestamps = false;
+
+    //todo validation for input
 
     public static function boot()
     {
@@ -23,3 +26,4 @@ class Comment extends Model
         });
     }
 }
+
