@@ -46,7 +46,7 @@ class CharactersService extends BaseNetworkService{
 
 
 
-    private function applyFilterParam(Collection $collection, string $gender){
+    private function applyFilterParam(Collection $collection, $gender){
         //todo ensure filterparams and is a valid gender is allowed if not throw an error
         if (!empty($gender)){
             $characters_filtered_by_gender = $collection->filter(function ($value) use($gender) {
