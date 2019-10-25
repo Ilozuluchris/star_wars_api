@@ -15,7 +15,10 @@ class CreateCommentsTable extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->timestamps();
+            $table->smallInteger('film_episode_id')->unsigned();
+            $table->string('content',500);
+            $table->ipAddress('commenter_ip');
+            $table->timestamp('created_at');
         });
     }
 
