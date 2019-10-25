@@ -36,7 +36,6 @@
  */
 
 namespace App\Http\Controllers;
-use App\Interfaces\CommentRepositoryInterface;
 use App\Services\FilmsService;
 
 

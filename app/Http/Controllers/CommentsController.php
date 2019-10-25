@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Comment;
 use App\Http\Requests\CreateCommentRequest;
 use App\Interfaces\CommentRepositoryInterface;
+use App\Services\CommentsService;
 use Illuminate\Http\Request;
 
 class CommentsController extends Controller
@@ -22,11 +23,12 @@ class CommentsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateCommentRequest $request)
+    public function store(CreateCommentRequest $request,CommentsService $commentsService)
     {
-        $saved_comment = $this->repository->save($request->all());
+
+        $new_comment = $commentsService->saveNewComment($request->validated());
         return response()->json(
-            ['data'=>$saved_comment], 201
+            $new_comment, 201
         );
     }
 
