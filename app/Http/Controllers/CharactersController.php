@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Services\CharactersService;
-use App\Services\CommentsService;
 use Illuminate\Http\Request;
 
 class CharactersController extends Controller
@@ -19,10 +18,17 @@ class CharactersController extends Controller
      * @param $film_episode_id
      * @return \Illuminate\Http\Response
      */
-    public function index($film_episode_id)
+    public function index($film_episode_id, Request $request)
     {
-        //
-        return $this->service->charactersByFilm($film_episode_id);
+        // name, gender or height
+        //order desc asc
+        // filter by gender
+        $query_params = collect([
+            'sort'=>$request->input('sort'),
+            'order'=>$request->input('order'),
+            'filter'=>$request->input('filter'),
+        ]);
+        return $this->service->charactersByFilm($film_episode_id, $query_params);
 
     }
 }
