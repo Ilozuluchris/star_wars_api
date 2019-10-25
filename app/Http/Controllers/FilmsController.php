@@ -36,6 +36,7 @@
  */
 
 namespace App\Http\Controllers;
+use App\Interfaces\CommentRepositoryInterface;
 use App\Services\FilmsService;
 
 
@@ -46,9 +47,9 @@ class FilmsController extends Controller
      * @param FilmsService $filmsService
      * @return \Illuminate\Http\JsonResponse
      */
-    public function index(FilmsService $filmsService)
+    public function index(FilmsService $filmsService, CommentRepositoryInterface $repository)
     {
-        $films = $filmsService->allFilms();
+        $films = $filmsService->allFilms($repository);
         return response()->json($films, 200);
     }
 

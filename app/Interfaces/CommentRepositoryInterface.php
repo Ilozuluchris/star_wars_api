@@ -4,6 +4,6 @@ namespace App\Interfaces;
 
 interface CommentRepositoryInterface{
     public function save();
-    public function countForFilm($film_episode_id);
+    public function countForFilm(int $film_episode_id):int;
     public function all();
 }
