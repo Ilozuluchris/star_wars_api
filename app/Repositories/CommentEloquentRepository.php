@@ -19,12 +19,7 @@ class CommentEloquentRepository implements CommentRepositoryInterface{
 
     public function countForFilm(int $film_episode_id):int{
         // TODO: Implement countForFilm() method.
-       try{
-           $count =  $this->comment->where('film_episode_id', $film_episode_id)->count();
-       }
-       catch (QueryException $e){
-           $count = 0;
-       }
+        $count =  $this->comment->where('film_episode_id', $film_episode_id)->count();
        return $count;
     }
 
