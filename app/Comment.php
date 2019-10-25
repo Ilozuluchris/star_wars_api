@@ -7,5 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
     //
-    public $timestamps = ["created_at"]; // enable only to created_at
+    protected $fillable = ['film_episode_id',
+        'content',
+        'commenter_ip',
+    ];
+
+    public $timestamps = false;
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model) {
+            $model->setCreatedAt($model->freshTimestamp());
+        });
+    }
 }
