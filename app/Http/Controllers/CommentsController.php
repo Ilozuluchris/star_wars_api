@@ -11,11 +11,19 @@ use Illuminate\Http\Request;
 class CommentsController extends Controller
 {
 
-    public function __construct(CommentRepositoryInterface $commentRepository)
+    public function __construct(CommentsService $commentsService)
     {
-        $this->repository = $commentRepository;
+        $this->service = $commentsService;
     }
 
+
+
+    public function index(){
+        $all_comments = $this->service->getAllComments();
+        return response()->json(
+            $all_comments, 200
+        );
+    }
 
     /**
      * Store a newly created comment in storage.
@@ -23,13 +31,17 @@ class CommentsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateCommentRequest $request,CommentsService $commentsService)
+    #todo look for way to push data attribute to resource
+    public function store(CreateCommentRequest $request)
     {
 
-        $new_comment = $commentsService->saveNewComment($request->validated());
+        $new_comment = $this->service->saveNewComment($request->validated());
         return response()->json(
-            $new_comment, 201
+            ['data'=>$new_comment], 201
         );
     }
+
+
+
 
 }

@@ -14,12 +14,11 @@ class CommentResource extends JsonResource
      */
     public function toArray($request)
     {
-        return[
-            'data'=>[
+        return [
                 'film_episode_id' => $this->film_episode_id,
                 'content' => $this->content,
-                'commenter_ip' => $this->commenter_ip
-            ]
+                'commenter_ip' => $this->commenter_ip,
+                'created_at' => $this->created_at
         ];
     }
 }

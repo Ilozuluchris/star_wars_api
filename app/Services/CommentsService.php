@@ -4,6 +4,7 @@ namespace App\Services;
 
 
 use App\Http\Resources\CommentResource;
+use App\Http\Resources\CommentResourceCollection;
 use App\Interfaces\CommentRepositoryInterface;
 
 class CommentsService{
@@ -11,6 +12,11 @@ class CommentsService{
     public function __construct(CommentRepositoryInterface $commentRepository )
     {
         $this->repository = $commentRepository;
+    }
+
+    public function getAllComments(){
+        $all_comments = $this->repository->all();
+        return new CommentResourceCollection(CommentResource::collection($all_comments));
     }
 
     public function saveNewComment($comment_data){
