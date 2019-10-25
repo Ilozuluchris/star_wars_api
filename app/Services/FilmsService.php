@@ -30,6 +30,11 @@ class FilmsService extends BaseNetworkService
 
     }
 
+    public function getFilmContents(int $film_episode_id){
+        $json_content = $this->getUrl('https://swapi.co/api/films/'.$film_episode_id);
+        return $json_content;
+    }
+
     /**
      * @param $json_content
      *
