@@ -7,6 +7,7 @@ use App\Http\Resources\{FilmResource, FilmResourceCollection};
 use App\Interfaces\CommentRepositoryInterface;
 use App\Repositories\CommentEloquentRepository;
 use GuzzleHttp\Client;
+use Illuminate\Support\Arr;
 
 class FilmsService extends BaseNetworkService
 {
@@ -24,10 +25,9 @@ class FilmsService extends BaseNetworkService
      */
     public function allFilms():FilmResourceCollection{
         $json_content =  $this->getUrl('https://swapi.co/api/films/')['results'];
-        $full_content = $this->addCommentCount($json_content);
+        $films = $this->serializeFilmsData($json_content);
+        return new FilmResourceCollection($films);
 
-        $films =  new FilmResourceCollection(FilmResource::collection($full_content));
-        return $films;
     }
 
     /**
@@ -41,5 +41,16 @@ class FilmsService extends BaseNetworkService
             return $item;
         });
         return $full_content;
+    }
+
+    /**
+     * @param $json_content
+     * @return mixed
+     */
+    private function serializeFilmsData($json_content)
+    {
+        $full_content = $this->addCommentCount($json_content);
+        $sorted_films = $full_content->sortBy('release_date')->values();
+        return $sorted_films;
     }
 }

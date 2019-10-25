@@ -26,8 +26,4 @@ class FilmResource extends JsonResource
        ];
     }
 
-    private function getCommentCount($episode_id){
-        #todo
-        return 0;
-    }
 }

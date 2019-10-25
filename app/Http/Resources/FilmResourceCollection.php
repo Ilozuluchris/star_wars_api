@@ -16,11 +16,8 @@ class FilmResourceCollection extends ResourceCollection
     public function toArray($request)
     {
         $films = $this->collection;
-        $sorted_films = array_values(Arr::sort($films, function ($film) {
-            return $film['release_date'];
-        }));
         return [
-            'data' => $sorted_films,
+            'data'=> $this->collection
             ];
     }
 }

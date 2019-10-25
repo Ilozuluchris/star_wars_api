@@ -16,7 +16,7 @@ class CommentsService{
 
     public function getAllComments(){
         $all_comments = $this->repository->all();
-        return new CommentResourceCollection(CommentResource::collection($all_comments));
+        return new CommentResourceCollection($all_comments);
     }
 
     public function saveNewComment($comment_data){
