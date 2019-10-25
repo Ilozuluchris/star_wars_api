@@ -13,8 +13,8 @@ class FilmsService extends BaseService
      */
 
     public function allFilms():FilmResourceCollection{
-        $json_content =  $this->getUrl('https://swapi.co/api/films/');
-        $films =  new FilmResourceCollection(FilmResource::collection(collect($json_content['results'])));
+        $json_content =  $this->getUrl('https://swapi.co/api/films/')['results'];
+        $films =  new FilmResourceCollection(FilmResource::collection(collect($json_content)));
         return $films;
     }
 }
