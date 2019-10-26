@@ -13,6 +13,38 @@ class CharactersController extends Controller
         $this->service = $charactersService;
     }
 
+
+    /**
+     * @OA\Get(
+     *      path="/api/films/{film_episode_id}/Characters",
+     *      operationId="getProjectsList",
+     *      tags={"characters"},
+     *      summary="Get list of characters in star wars film",
+     *      description="Returns list of characters in a star wars film described by id passed in.",
+     *      @OA\Parameter(
+     *         description="Episode id of film",
+     *         in="path",
+     *         name="film_episode_id",
+     *         required=true,
+     *         @OA\Schema(
+     *           schema="film_episode_id",
+     *           type="integer",
+     *           format="int64"
+     *         )
+     *     ),
+     *     @OA\Response(
+     *          response=200,
+     *          description="successful operation",
+     *          @OA\JsonContent(type="array",
+     *                          @OA\Items(ref="#/components/schemas/Character")
+     *          ),
+     *     ),
+     *       @OA\Response(response=500, description="Bad request"),*
+     *     )
+     *
+     * Returns list of characters in a star wars film described by id passed in.
+     */
+
     /**
      * Display a listing of the resource.
      * @param $film_episode_id
