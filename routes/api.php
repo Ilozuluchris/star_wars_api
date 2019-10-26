@@ -14,12 +14,11 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::apiResource('/films', 'FilmsController')->only(['index']);
 
-Route::get('/films', 'FilmsController@index');
+Route::apiResource('/films/{film_episode_id}/comments', 'CommentsController')->only(['index', 'store']);
 
+Route::apiResource('/films/{film_episode_id}/characters', 'CharactersController')->only(['index']);
 
 Route::fallback(function(){
     return response()->json([

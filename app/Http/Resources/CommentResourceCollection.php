@@ -3,9 +3,8 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
-use Illuminate\Support\Arr;
 
-class FilmResourceCollection extends ResourceCollection
+class CommentResourceCollection extends ResourceCollection
 {
     /**
      * Transform the resource collection into an array.
@@ -15,9 +14,9 @@ class FilmResourceCollection extends ResourceCollection
      */
     public function toArray($request)
     {
-        $films = $this->collection;
+
         return [
-            'data'=> $this->collection
-            ];
+            'data' => $this->collection,
+        ];
     }
 }

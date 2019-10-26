@@ -19,6 +19,31 @@ services:
       - db
     environment:
       - PORT=8181
+      - APP_NAME=Laravel
+      - APP_ENV=local
+      - APP_KEY=base64:t9zlqPFdHDipViU69I8q/jq0EzPTyz6o2Mo7mPV54fg=
+      - APP_DEBUG=true
+      - APP_URL=http://localhost
+
+      - LOG_CHANNEL=stack
+
+      - DB_CONNECTION=pgsql
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_DATABASE=laravel
+      - DB_USERNAME=api
+      - DB_PASSWORD=api
+
+      - BROADCAST_DRIVER=log
+      - CACHE_DRIVER=file
+      - QUEUE_CONNECTION=sync
+      - SESSION_DRIVER=file
+      - SESSION_LIFETIME=120
+
+      - REDIS_HOST=127.0.0.1
+      - REDIS_PASSWORD=null
+      - REDIS_PORT=6379
+      - L5_SWAGGER_GENERATE_ALWAYS=true
     ports:
       - "8181:8181"
 
