@@ -35,9 +35,7 @@ class CharactersController extends Controller
      *     @OA\Response(
      *          response=200,
      *          description="successful operation",
-     *          @OA\JsonContent(type="array",
-     *                          @OA\Items(ref="#/components/schemas/Character")
-     *          ),
+     *          @OA\JsonContent(ref="#/components/schemas/Characters"),
      *     ),
      *       @OA\Response(response=500, description="Bad request"),*
      *     )
