@@ -15,9 +15,9 @@ class CreateCommentRequest extends FormRequest
     public function rules()
     {
 
-            return [
+        #todo handle what happens if 500 is passed
+        return [
                 'content' => 'bail|required|string|max:500',
-                'commenter_ip'=>'bail|required|ipv4'
             ];
 
 

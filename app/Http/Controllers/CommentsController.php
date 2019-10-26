@@ -36,8 +36,7 @@ class CommentsController extends Controller
     #todo look for way to push data attribute to resource
     public function store(CreateCommentRequest $request, $film_episode_id)
     {
-
-        $new_comment = $this->service->saveNewComment(Arr::add($request->validated(), 'film_episode_id', $film_episode_id));
+        $new_comment = $this->service->saveNewComment($request, $film_episode_id);
         return $new_comment->response()->setStatusCode(201);
     }
 
