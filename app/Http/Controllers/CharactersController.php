@@ -17,10 +17,10 @@ class CharactersController extends Controller
     /**
      * @OA\Get(
      *      path="/api/films/{film_episode_id}/characters",
-     *      operationId="getProjectsList",
-     *      tags={"characters"},
+     *      operationId="getCharacterList",
+     *      tags={"Characters"},
      *      summary="Get list of characters in star wars film",
-     *      description="Returns list of characters in a star wars film described by id passed in.",
+     *      description="Returns list of characters in a star wars film identified by film_episode_id passed in.",
      *      @OA\Parameter(
      *         description="Episode id of film",
      *         in="path",
@@ -32,6 +32,45 @@ class CharactersController extends Controller
      *           format="int64"
      *         )
      *     ),
+     *     @OA\Parameter(
+     *     description="Parameter to sort by",
+     *     name="sort",
+     *     in="query",
+     *     @OA\Schema(
+     *         type="array",
+     *           @OA\Items(
+     *               type="string",
+     *               enum={"name", "height", "gender"},
+     *           ),
+     *         ),
+     *    ),
+     *    @OA\Parameter(
+     *     description="Order sorted resulted by, only used when sort parameter is present",
+     *     name="order",
+     *     in="query",
+     *     @OA\Schema(
+     *         type="array",
+     *           @OA\Items(
+     *               type="string",
+     *               enum={"desc","asc"},
+     *               default="asc"
+     *           ),
+     *         ),
+     *    ),
+     *     @OA\Parameter(
+     *     description="Filter characters by gender",
+     *     name="filter",
+     *     in="query",
+     *     @OA\Schema(
+     *         type="array",
+     *           @OA\Items(
+     *               type="string",
+     *               enum={"male","female","unknown","n/a"},
+     *               default="asc"
+     *           ),
+     *         ),
+     *     style="label"
+     *    ),
      *     @OA\Response(
      *          response=200,
      *          description="successful operation",

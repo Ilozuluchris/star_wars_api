@@ -61,7 +61,7 @@ class CommentsController extends Controller
      *      operationId="addNewComment",
      *      tags={"Comments"},
      *      summary="Add a new comment for a film",
-     *      description="Add new comment for a star wars film described by film_episode_id passed in.`",
+     *      description="Add new comment for a star wars film identified by film_episode_id passed in.`",
      *      @OA\Parameter(
      *         description="Episode id of film to add comment for",
      *         in="path",
