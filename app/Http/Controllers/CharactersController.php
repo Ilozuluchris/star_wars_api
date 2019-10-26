@@ -16,7 +16,7 @@ class CharactersController extends Controller
 
     /**
      * @OA\Get(
-     *      path="/api/films/{film_episode_id}/Characters",
+     *      path="/api/films/{film_episode_id}/characters",
      *      operationId="getProjectsList",
      *      tags={"characters"},
      *      summary="Get list of characters in star wars film",
