@@ -35,9 +35,10 @@ class CharacterResourceCollection extends ResourceCollection
     private function cm2feet(int $cm)
     {
         $inches = $cm/2.54;
-        $feet = intdiv($inches, 12);
-        $inches = round($inches%12);
-        return ['feet'=>$feet,'inches'=>$inches];
+        $feet_with_decimal = $inches/12;
+        $feet_int = (int) $feet_with_decimal;
+        $feet_fraction = round($feet_with_decimal - $feet_int, 2); // .25
+        return ['feet'=>$feet_int, 'inches'=>$feet_fraction*12];
 
     }
 }

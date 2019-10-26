@@ -87,8 +87,8 @@ class FeetHeight{
 
     /**
      *  Height in inches
-     * @var integer
-     * @OA\Property()
+     * @var float
+     * @OA\Property(example=0.00)
      *
      */
     public $inches;
