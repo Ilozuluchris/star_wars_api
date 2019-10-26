@@ -16,7 +16,6 @@ class CreateCommentRequest extends FormRequest
     {
 
             return [
-                'film_episode_id' => 'bail|required|integer',
                 'content' => 'bail|required|string|max:500',
                 'commenter_ip'=>'bail|required|ipv4'
             ];

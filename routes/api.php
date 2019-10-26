@@ -14,9 +14,9 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/films', 'FilmsController@index');
+Route::apiResource('/films', 'FilmsController')->only(['index']);
 
-Route::post('/films/comments', 'CommentsController@store');
+Route::apiResource('/films/{film_episode_id}/comments', 'CommentsController')->only(['index', 'store']);
 
 Route::apiResource('/films/{film_episode_id}/characters', 'CharactersController')->only(['index']);
 

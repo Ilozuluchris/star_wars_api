@@ -19,5 +19,5 @@ interface CommentRepositoryInterface{
     /*** Gets all comments in database
      * @return mixed
      */
-    public function all();
+    public function allForFilm(int $film_episode_id);
 }

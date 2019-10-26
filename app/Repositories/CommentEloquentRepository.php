@@ -13,9 +13,9 @@ class CommentEloquentRepository implements CommentRepositoryInterface{
         $this->comment = $comment;
     }
 
-    public function all(){
+    public function allForFilm($film_episode_id){
         // TODO: Implement all() method.
-        return $this->comment::orderBy('created_at','DESC')->get();
+        return $this->comment::where('film_episode_id', $film_episode_id)->orderBy('created_at','DESC')->get();
     }
 
     public function countForFilm(int $film_episode_id):int{

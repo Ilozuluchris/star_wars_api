@@ -8,6 +8,7 @@ use App\Http\Resources\CommentResource;
 use App\Interfaces\CommentRepositoryInterface;
 use App\Services\CommentsService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 
 class CommentsController extends Controller
 {
@@ -19,8 +20,8 @@ class CommentsController extends Controller
 
 
 
-    public function index(){
-        $all_comments = $this->service->getAllComments();
+    public function index($film_episode_id){
+        $all_comments = $this->service->getAllComments($film_episode_id);
         return response()->json(
             $all_comments, 200
         );
@@ -33,10 +34,10 @@ class CommentsController extends Controller
      *
      */
     #todo look for way to push data attribute to resource
-    public function store(CreateCommentRequest $request)
+    public function store(CreateCommentRequest $request, $film_episode_id)
     {
 
-        $new_comment = $this->service->saveNewComment($request->validated());
+        $new_comment = $this->service->saveNewComment(Arr::add($request->validated(), 'film_episode_id', $film_episode_id));
         return $new_comment->response()->setStatusCode(201);
     }
 
