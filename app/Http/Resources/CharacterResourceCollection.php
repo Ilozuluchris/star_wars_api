@@ -36,7 +36,7 @@ class CharacterResourceCollection extends ResourceCollection
     {
         $inches = $cm/2.54;
         $feet = intdiv($inches, 12);
-        $inches = $inches%12;
+        $inches = round($inches%12);
         return ['feet'=>$feet,'inches'=>$inches];
 
     }
