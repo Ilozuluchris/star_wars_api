@@ -14,7 +14,7 @@ class CommentsService{
         $this->repository = $commentRepository;
     }
 
-    public function getAllComments($film_episode_id){
+    public function commentsForFilm($film_episode_id){
         $all_comments = $this->repository->allForFilm($film_episode_id);
         return new CommentResourceCollection($all_comments);
     }

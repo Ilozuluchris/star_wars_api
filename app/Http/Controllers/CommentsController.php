@@ -21,7 +21,7 @@ class CommentsController extends Controller
 
 
     public function index($film_episode_id){
-        $all_comments = $this->service->getAllComments($film_episode_id);
+        $all_comments = $this->service->commentsForFilm($film_episode_id);
         return response()->json(
             $all_comments, 200
         );
