@@ -15,7 +15,7 @@ class FilmsTest extends TestCase
      *
      * @return void
      */
-    public function testGetAllFIlms()
+    public function testGetAllFilms()
     {
         $this->mock(FilmsService::class, function ($mock) {
             $data=['data'=>
