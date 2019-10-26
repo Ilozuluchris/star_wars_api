@@ -23,7 +23,7 @@ class FilmsService extends BaseNetworkService
      * @return FilmResourceCollection
      * @throws SwApiException
      */
-    public function allFilms():FilmResourceCollection{
+    public function allFilms(){
         $json_content =  $this->getUrl('https://swapi.co/api/films/')['results'];
         $films = $this->serializeFilmsData($json_content);
         return new FilmResourceCollection($films);
