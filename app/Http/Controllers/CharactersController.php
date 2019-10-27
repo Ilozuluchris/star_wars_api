@@ -65,7 +65,7 @@ class CharactersController extends Controller
      *         type="array",
      *           @OA\Items(
      *               type="string",
-     *               enum={"male","female","unknown","n/a"},
+     *               enum={"male","female","unknown","n/a","hermaphrodite"},
      *               default="asc"
      *           ),
      *         ),
