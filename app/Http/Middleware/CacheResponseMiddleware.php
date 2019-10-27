@@ -16,7 +16,7 @@ class CacheResponseMiddleware
      */
     public function handle($request, Closure $next){
         #todo add status code
-        $cached_response= Cache::get($this->getKey($request));
+        $cached_response= Cache::get($this->getCacheKey($request));
         if($cached_response!=''){
             return response()->json(json_decode($cached_response));
         }
@@ -27,15 +27,13 @@ class CacheResponseMiddleware
     }
 
     public function terminate($request, $response){
-        logger("termianting");
-        logger($this->getkey($request));
-        Cache::add($this->getKey($request), $response->getContent(), 30*60);
+        Cache::add($this->getCacheKey($request), $response->getContent(), 20);
     }
 
     /**
      * @return mixed
      */
-    private function getKey($request)
+    private function getCacheKey($request)
     {
         return $request->fullUrl();
     }
