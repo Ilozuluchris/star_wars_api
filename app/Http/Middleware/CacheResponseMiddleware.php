@@ -2,11 +2,14 @@
 
 namespace App\Http\Middleware;
 
+use App\Services\CacheService;
 use Closure;
 use Illuminate\Support\Facades\Cache;
+use function PHPSTORM_META\type;
 
 class CacheResponseMiddleware
 {
+    use CacheService;
     /**
      * Handle an incoming request.
      *
@@ -16,18 +19,14 @@ class CacheResponseMiddleware
      */
     public function handle($request, Closure $next){
         #todo add status code
-        $cached_response= Cache::get($this->getCacheKey($request));
-        if($cached_response!=''){
-            return response()->json(json_decode($cached_response));
-        }
-        else{
-            return $next($request);
-        }
-
+        $res = $this->getFromCache($this->getCacheKey($request),$next($request));
+        logger(gettype($res));
+        return $res;
     }
 
     public function terminate($request, $response){
-        Cache::add($this->getCacheKey($request), $response->getContent(), 20);
+        logger(gettype($response->getContent()));
+        $this->addToCache($this->getCacheKey($request),$response->getContent());
     }
 
     /**

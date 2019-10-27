@@ -6,15 +6,15 @@ use Illuminate\Support\Facades\Cache;
 
 trait CacheService{
 
-    public function getFromCache($key){
+    public function getFromCache($key, $default_return=null){
         $cached_response= Cache::get($key);
         if($cached_response!=''){
             return $cached_response;
         }
-        return null;
+        return $default_return;
     }
 
-    public function  addToCache(string $key, array $data){
+    public function  addToCache(string $key,  $data){
         Cache::add($key,$data,10*60 );
     }
 }
