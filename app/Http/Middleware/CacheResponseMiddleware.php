@@ -20,13 +20,14 @@ class CacheResponseMiddleware
     public function handle($request, Closure $next){
         #todo add status code
         $res = $this->getFromCache($this->getCacheKey($request),$next($request));
-        logger(gettype($res));
+        if (is_string($res)){
+            return response()->json(json_decode($res));
+        }
         return $res;
     }
 
     public function terminate($request, $response){
-        logger(gettype($response->getContent()));
-        $this->addToCache($this->getCacheKey($request),$response->getContent());
+        $this->addToCache($this->getCacheKey($request), $response->getContent(), 30);
     }
 
     /**

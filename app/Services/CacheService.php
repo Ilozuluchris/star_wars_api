@@ -14,7 +14,7 @@ trait CacheService{
         return $default_return;
     }
 
-    public function  addToCache(string $key,  $data){
-        Cache::add($key,$data,10*60 );
+    public function  addToCache(string $key,  $data, $ttl=10*60){
+        Cache::add($key,$data,$ttl);
     }
 }
