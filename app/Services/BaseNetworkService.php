@@ -7,23 +7,14 @@ use GuzzleHttp\Exception\RequestException;
 use Illuminate\Support\Facades\Cache;
 
 abstract  class BaseNetworkService{
+    use CacheService;
+
     public function __construct(Client $HttpClient)
     {
         $this->http_client = $HttpClient;
     }
 
 
-    private function getCachedResponse($url){
-        $cached_response= Cache::get($url);
-        if($cached_response!=''){
-            return $cached_response;
-        }
-        return null;
-    }
-
-    private function  addResponseToCache(string $url, array $json_response){
-        Cache::add($url,$json_response,10*60 );
-    }
 
     private function fetchFromSwapi($url):array{
         try{
@@ -34,13 +25,13 @@ abstract  class BaseNetworkService{
             throw  new SwapiGetException($e->getMessage(), $url);
         }
         $contents = json_decode($res->getBody()->getContents(), true);
-        $this->addResponseToCache($url, $contents);
+        $this->addToCache($url, $contents);
         return $contents;
     }
 
     public function getUrl(string $url):array{
 
-        $contents = $this->getCachedResponse($url)??$this->fetchFromSwapi($url);
+        $contents = $this->getFromCache($url)??$this->fetchFromSwapi($url);
         return $contents;
     }
 }
