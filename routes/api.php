@@ -14,11 +14,16 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::apiResource('/films', 'FilmsController')->only(['index']);
+Route::middleware(["cache.apiresponses"])->group(function () {
+    Route::apiResource('/films', 'FilmsController')->only(['index']);
+
+    Route::apiResource('/films/{film_episode_id}/comments', 'CommentsController')->only(['index', 'store']);
+
+    Route::apiResource('/films/{film_episode_id}/characters', 'CharactersController')->only(['index']);
+});
 
 Route::apiResource('/films/{film_episode_id}/comments', 'CommentsController')->only(['index', 'store']);
 
-Route::apiResource('/films/{film_episode_id}/characters', 'CharactersController')->only(['index']);
 
 Route::fallback(function(){
     return response()->json([
