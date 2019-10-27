@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Exceptions\SwApiException;
+use App\Exceptions\SwapiGetException;
 use App\Http\Resources\{FilmResource, FilmResourceCollection};
 use App\Interfaces\CommentRepositoryInterface;
 use App\Repositories\CommentEloquentRepository;
@@ -21,7 +21,7 @@ class FilmsService extends BaseNetworkService
 
     /*** Fetch ALL FILMS
      * @return FilmResourceCollection
-     * @throws SwApiException
+     * @throws SwapiGetException
      */
     public function allFilms(){
         $json_content =  $this->getUrl('https://swapi.co/api/films/')['results'];
