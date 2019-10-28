@@ -69,7 +69,6 @@ class CharactersController extends Controller
      *               default="asc"
      *           ),
      *         ),
-     *     style="label"
      *    ),
      *     @OA\Response(
      *          response=200,
