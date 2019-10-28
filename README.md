@@ -3,7 +3,8 @@
 
 ## Setup
 - Ensure you have docker locally then run `docker build . -t ilozulu_chris_sw_api`
-- Run `docker volume create --name=star_wars_api_data; docker volume create --name=redis_data`
+- Delete docker volumes if any to prevent problems `docker volume rm star_wars_api_data; docker volume rm cache_data`
+- Run `docker volume create --name=star_wars_api_data; docker volume create --name=cache_data`
 
 ## Usage
    ### Locally

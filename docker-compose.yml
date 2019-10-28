@@ -1,7 +1,7 @@
 version: '3.5'
 services:
   db:
-    image: "postgres:latest"
+    image: "postgres:12"
     restart: always
     environment:
      - POSTGRES_USER=api
@@ -38,15 +38,15 @@ services:
     ports:
       - "8181:8181"
   redis:
-    image: "redis"
+    image: "redis:5.0.6"
     restart: always
     command: ["redis-server", "--appendonly", "yes"]
     volumes:
-      - redis_data:/data
+      - cache_data:/data
 
 
 volumes:
   star_wars_api_data:
     external: true
-  redis_data:
+  cache_data:
     external: true
