@@ -2,12 +2,12 @@
 
 namespace App\Http\Middleware;
 
-use App\Services\CacheService;
+use App\Services\CacheResponseService;
 use Closure;
 
 class CacheResponseMiddleware
 {
-    use CacheService;
+    use CacheResponseService;
     /**
      * Handle an incoming request.
      *
