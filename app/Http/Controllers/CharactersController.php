@@ -85,12 +85,12 @@ class CharactersController extends Controller
      */
 
 
-    /**
-     * Display a listing of the resource.
-     * @param $film_episode_id
-     * @return \Illuminate\Http\Response
+    /** Return list of chracters in  film
+     * @param int $film_episode_id identifier for film
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function index($film_episode_id, Request $request)
+    public function index(int $film_episode_id, Request $request)
     {
         // name, gender or height
         //order desc asc
@@ -100,7 +100,8 @@ class CharactersController extends Controller
             'order'=>$request->input('order'),
             'filter'=>$request->input('filter'),
         ]);
-        return $this->service->charactersByFilm($film_episode_id, $query_params);
+        $characters = $this->service->charactersByFilm($film_episode_id, $query_params);
+        return response()->json($characters, 200);
 
     }
 }
