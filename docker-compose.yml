@@ -14,6 +14,9 @@ services:
 
   api:
     image: "ilozulu_chris_sw_api:latest"
+    build:
+      dockerfile: Dockerfile
+      context: .
     restart: always
     depends_on:
       - db
