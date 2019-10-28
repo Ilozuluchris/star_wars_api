@@ -17,4 +17,4 @@
 
 
 ##Testing
-- After setting up, run tests with coverage using  `docker run -i --entrypoint='/bin/bash'  ilozulu_chris_sw_api  -c 'vendor/bin/phpunit --coverage-text=coverage.txt && head coverage.txt'`
+- After setting up, run tests with coverage using  `docker-compose up -d --build && docker-compose exec api  bash -c 'vendor/bin/phpunit --coverage-text=coverage.txt && head -n 10 coverage.txt'`
