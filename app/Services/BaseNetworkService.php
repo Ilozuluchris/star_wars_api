@@ -25,7 +25,7 @@ abstract  class BaseNetworkService{
             throw  new SwapiGetException("Query on ".$url." failed. Reason ".$e->getMessage());
         }
         $contents = json_decode($res->getBody()->getContents(), true);
-        $this->addToCache($url, $contents);
+        $this->addToCache($url, $contents, $res->getStatusCode());
         return $contents;
     }
 

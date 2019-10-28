@@ -25,9 +25,7 @@ class CacheResponseMiddleware
     }
 
     public function terminate($request, $response){
-        if(!($response->status()=='500')){
-            $this->addToCache($this->getCacheKey($request), $response->getContent(), 30);
-        }
+            $this->addToCache($this->getCacheKey($request), $response->getContent(),$response->status(), 30);
     }
 
     /**
