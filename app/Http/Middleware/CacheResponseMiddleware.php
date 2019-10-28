@@ -4,8 +4,6 @@ namespace App\Http\Middleware;
 
 use App\Services\CacheService;
 use Closure;
-use Illuminate\Support\Facades\Cache;
-use function PHPSTORM_META\type;
 
 class CacheResponseMiddleware
 {
