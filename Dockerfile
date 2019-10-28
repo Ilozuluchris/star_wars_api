@@ -9,6 +9,8 @@ WORKDIR /app
 COPY . /app
 RUN composer install
 
-CMD php artisan serve --host=0.0.0.0 --port=$PORT
-EXPOSE 8181
+RUN chmod +x setup_api.sh
+
 EXPOSE $PORT
+
+ENTRYPOINT ["./setup_api.sh"]
