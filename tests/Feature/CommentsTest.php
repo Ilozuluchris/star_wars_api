@@ -9,6 +9,7 @@ use Tests\TestCase;
 
 class CommentsTest extends TestCase
 {
+    use WithFaker;
     /**
      * A basic feature test example.
      *
@@ -64,5 +65,14 @@ class CommentsTest extends TestCase
             ->assertJson(['content'=>'test content', 'film_episode_id'=>1])
             ->assertJsonStructure(['content',
                 'film_episode_id','commenter_ip','created_at']);
+    }
+
+    public function testSaveLongContent(){
+        $response = $this->json('post', '/api/films/1/comments', ["content"=>$this->faker->sentence(505)
+        ]);
+
+        $response
+            ->assertStatus(500)
+            ->assertJsonStructure(['error']);
     }
 }
