@@ -22,7 +22,7 @@ abstract  class BaseNetworkService{
         }
         catch (RequestException $e){
             #todo log actual error, maybe even pass normal error in
-            throw  new SwapiGetException($e->getMessage(), $url);
+            throw  new SwapiGetException("Query on ".$url." failed. Reason ".$e->getMessage());
         }
         $contents = json_decode($res->getBody()->getContents(), true);
         $this->addToCache($url, $contents);
