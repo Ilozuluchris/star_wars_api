@@ -48,8 +48,11 @@ class CommentsController extends Controller
      *
      */
 
-
-    public function index($film_episode_id){
+    /** Get all comments for a film.
+     * @param int $film_episode_id identifier for film
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function index(int $film_episode_id){
         $all_comments = $this->service->commentsForFilm($film_episode_id);
         return response()->json(
             $all_comments, 200
@@ -94,16 +97,15 @@ class CommentsController extends Controller
      */
 
 
-    /**
+    /** Store comment for film in db.
      * @param CreateCommentRequest $request
-     * @param $film_episode_id
-     * @return $this
+     * @param int $film_episode_id identifier for film
+     * @return \Illuminate\Http\JsonResponse
      */
-    #todo look for way to push data attribute to resource
-    public function store(CreateCommentRequest $request, $film_episode_id)
+    public function store(CreateCommentRequest $request, int $film_episode_id)
     {
         $new_comment = $this->service->saveNewComment($request, $film_episode_id);
-        return $new_comment->response()->setStatusCode(201);
+        return response()->json($new_comment,201);
     }
 
 

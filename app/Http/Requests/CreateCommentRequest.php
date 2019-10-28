@@ -14,12 +14,25 @@ class CreateCommentRequest extends FormRequest
      */
     public function rules()
     {
-
-        #todo handle what happens if 500 is passed
         return [
                 'content' => 'bail|required|string|max:500',
             ];
 
 
+    }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        #todo: include in error json
+        return [
+            'content.required' => 'Content is required',
+            'content.string'  => 'Content must be string not '.gettype($this->input('content')),
+            'content.max' => 'Content has a maximum length of 500'
+        ];
     }
 }
