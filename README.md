@@ -17,4 +17,4 @@
 
 
 ##Testing
-- After setting up, run tests with `docker run -i --entrypoint='/bin/bash'  ilozulu_chris_sw_api  -c 'vendor/bin/phpunit'`
+- After setting up, run tests with coverage using  `docker run -i --entrypoint='/bin/bash'  ilozulu_chris_sw_api  -c 'vendor/bin/phpunit --coverage-text=coverage.txt && head coverage.txt'`
