@@ -10,13 +10,14 @@ interface CommentRepositoryInterface{
      */
     public function save(array $params);
 
-    /** Count no of comments film specified by argument has in database.
-     * @param int $film_episode_id
+    /** Count no of comments for film  in database.
+     * @param int $film_episode_id Identifier for film
      * @return int
      */
     public function countForFilm(int $film_episode_id):int;
 
-    /*** Gets all comments in database
+    /*** Gets all comments for a film in database
+     * @param int $film_episode_id Identifier for film
      * @return mixed
      */
     public function allForFilm(int $film_episode_id);
