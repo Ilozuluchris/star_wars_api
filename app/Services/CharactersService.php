@@ -62,10 +62,10 @@ class CharactersService extends BaseNetworkService{
     /** Filter character list by gender.
      * Returns characters list untouched if gender is null or empty string
      * @param Collection $collection
-     * @param string $gender Gender to use.
+     * @param mixed $gender Gender to use. Can be null or string.
      * @return Collection|static Characters list with characters that match gender.
      */
-    private function applyFilterParam(Collection $collection,string $gender){
+    private function applyFilterParam(Collection $collection, $gender){
         //todo ensure filterparams and is a valid gender is allowed if not throw an error
         if (!empty($gender)){
             $characters_filtered_by_gender = $collection->filter(function ($value) use($gender) {
@@ -77,8 +77,8 @@ class CharactersService extends BaseNetworkService{
     }
 
     /** Sort and order character list.
+     * @param Collection $characters_list List of  characters
      * @param Collection $query_params, sort and order keys are used to run operation.
-     * @param $characters_list
      * @return mixed Sorted and ordered character list
      */
     private function sortAndOrder(Collection $characters_list, $query_params)
@@ -91,7 +91,7 @@ class CharactersService extends BaseNetworkService{
 
     }
 
-    /**
+    /** Sort Characters and order
      * @param Collection $characters_details
      * @param string $order Order to sort by (asc|desc).asc(ascending order) is default
      * @param string $sort_param Field to sort collections by
