@@ -14,7 +14,7 @@ class CommentsTest extends TestCase
      *
      * @return void
      */
-    public function testAllComments()
+    public function testGetComments()
     {
 
         $this->mock(CommentsService::class, function ($mock) {
@@ -44,5 +44,25 @@ class CommentsTest extends TestCase
                 ]
             ]);
 
+    }
+
+    public function testGetZeroComments(){
+        $response = $this->json('get', '/api/films/1/comments');
+
+        $response
+            ->assertStatus(200)
+            ->assertJson([
+            ]);
+    }
+
+
+    public function testSaveOfComment(){
+        $response = $this->json('post', '/api/films/1/comments', ["content"=>"test content"]);
+
+        $response
+            ->assertStatus(201)
+            ->assertJson(['content'=>'test content', 'film_episode_id'=>1])
+            ->assertJsonStructure(['content',
+                'film_episode_id','commenter_ip','created_at']);
     }
 }
