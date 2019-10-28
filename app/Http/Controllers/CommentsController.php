@@ -41,7 +41,9 @@ class CommentsController extends Controller
      *          )
      *
      *      ),
-     *       @OA\Response(response=500, description="Bad request"),*
+     *       @OA\Response(response=500, description="Bad request",
+     *          @OA\JsonContent(ref="#/components/schemas/ErrorMessage")
+     *      ),
      *     )
      *
      */
@@ -85,7 +87,8 @@ class CommentsController extends Controller
      *          )
      *
      *      ),
-     *       @OA\Response(response=500, description="Bad request"),*
+     *       @OA\Response(response=500, description="Bad request", @OA\JsonContent(ref="#/components/schemas/ErrorMessage")
+     *      ),*
      *     )
      *
      */

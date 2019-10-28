@@ -43,7 +43,7 @@ class CharactersMeta{
 
 
     /**
-     * @OA\Property(ref="#/components/schemas/HeightMeta")
+     * @OA\Property(ref="#/components/schemas/Height")
      */
     public $total_height;
 }
@@ -53,7 +53,7 @@ class CharactersMeta{
 /**
  * @OA\Schema()
  */
-class HeightMeta{
+class Height{
     /**
      *  Height in cm
      * @var integer
@@ -88,7 +88,7 @@ class FeetHeight{
     /**
      *  Height in inches
      * @var float
-     * @OA\Property(example=0.00)
+     * @OA\Property(example=0.01)
      *
      */
     public $inches;

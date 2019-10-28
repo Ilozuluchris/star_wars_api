@@ -76,11 +76,14 @@ class CharactersController extends Controller
      *          description="successful operation",
      *          @OA\JsonContent(ref="#/components/schemas/Characters"),
      *     ),
-     *       @OA\Response(response=500, description="Bad request"),*
+     *       @OA\Response(response=500, description="Bad request",
+     *          @OA\JsonContent(ref="#/components/schemas/ErrorMessage")
+     *      ),
      *     )
      *
      * Returns list of characters in a star wars film described by id passed in.
      */
+
 
     /**
      * Display a listing of the resource.

@@ -29,7 +29,9 @@
  *                          @OA\Items(ref="#/components/schemas/Film")
  *          ),
  *     ),
- *       @OA\Response(response=500, description="Bad request"),*
+ *       @OA\Response(response=500, description="Bad request",
+ *          @OA\JsonContent(ref="#/components/schemas/ErrorMessage")
+ *      ),
  *     )
  *
  * Returns list of star wars films
