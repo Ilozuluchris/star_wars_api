@@ -50,7 +50,10 @@ class Handler extends ExceptionHandler
     {
 
        if ($e instanceof ValidationException){
-           return response()->json(['error'=>$e->errors()],422);
+           $better_error = collect($e->errors())->map(function($item, $key){
+               return $item[0]; //since bail is added to Custom Request Class, only one error exists at a time.
+           });
+           return response()->json(['error'=>$better_error],422);
        }
 
 
