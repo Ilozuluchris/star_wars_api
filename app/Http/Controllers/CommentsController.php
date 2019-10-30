@@ -91,7 +91,11 @@ class CommentsController extends Controller
      *
      *      ),
      *       @OA\Response(response=500, description="Bad request", @OA\JsonContent(ref="#/components/schemas/ErrorMessage")
-     *      ),*
+     *      ),
+     *
+     *     @OA\Response(response=422,description="Bad data passed in",
+     *      @OA\JsonContent(example={"error": {"content": "content has 502 characters, but cannot be more than 500 characters, please shorten!"}})
+     *      ),
      *     )
      *
      */

@@ -30,9 +30,9 @@ class CreateCommentRequest extends FormRequest
     {
         #todo: include in error json
         return [
-            'content.required' => 'Content is required',
-            'content.string'  => 'Content must be string not '.gettype($this->input('content')),
-            'content.max' => 'Content has a maximum length of 500'
+            'content.required' => 'content must be passed in json',
+            'content.string'  => 'content must be string not '.gettype($this->input('content')),
+            'content.max' => 'content has '.strlen($this->input('content')).' characters, but cannot be more than 500 characters, please shorten!'
         ];
     }
 }
