@@ -27,7 +27,7 @@ class CharacterResourceCollection extends ResourceCollection
     {
         $total_height_cm = $collection->sum('height');
         $feet_inches = $this->cm2feet($total_height_cm);
-        return ['cm'=>$total_height_cm,'feet'=>$feet_inches];
+        return ['cm'=>$total_height_cm,'feet_height'=>$feet_inches];
 
 
     }

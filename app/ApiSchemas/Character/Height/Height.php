@@ -18,5 +18,5 @@ class Height{
      * @OA\Property(ref="#/components/schemas/FeetHeight")
      *
      */
-    public $feet;
+    public $feet_height;
 }
