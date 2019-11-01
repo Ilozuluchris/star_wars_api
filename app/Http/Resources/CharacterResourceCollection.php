@@ -37,7 +37,8 @@ class CharacterResourceCollection extends ResourceCollection
         $inches = $cm/2.54;
         $feet_with_decimal = $inches/12;
         $feet_int = (int) $feet_with_decimal;
-        return ['feet'=>$feet_int, 'inches'=>$feet_with_decimal%12];
+        $inches = $feet_with_decimal % 12;
+        return ['feet'=>$feet_int, 'inches'=> $inches];
 
     }
 }
