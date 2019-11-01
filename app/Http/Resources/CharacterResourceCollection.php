@@ -39,6 +39,5 @@ class CharacterResourceCollection extends ResourceCollection
         $feet_int = (int) $feet_with_decimal;
         $inches_remaining = round(($feet_with_decimal - $feet_int)*12, 2); // .25
         return ['feet'=>$feet_int, 'inches'=>$inches_remaining];
-
     }
 }
