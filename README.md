@@ -1,5 +1,5 @@
 #star_wars_api
-
+This project was built in 2019. New commits were only added to ensure the project works to a certain degree 
 
 ## Setup
 - Ensure you have docker locally then run `docker build . -t ilozulu_chris_sw_api`
@@ -9,7 +9,7 @@
 ## Usage
    ### Locally
    - After setting up run `docker-compose up -d`
-   - Visit [Local Documentation](localhost:8081/api/documentation) to see how to make to queries
+   - Visit [Local Documentation](http://0.0.0.0:8081/api/documentation) to see how to make to queries
    
    ### Remote
    - Project is also hosted [Documentation](http://chris-starwars-api.herokuapp.com/api/documentation) 
